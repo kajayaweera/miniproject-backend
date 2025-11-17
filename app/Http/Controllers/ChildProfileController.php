@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ChildProfile;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
@@ -80,5 +81,13 @@ class ChildProfileController extends Controller
     {
         $childProfile->delete();
         return response()->json(null, 204);
+    }
+
+    public function getChildProfile(User $user){
+        $child = ChildProfile::where('user_id', $user->id)
+            ->latest()
+            ->first();
+
+        return response()->json($child);
     }
 }

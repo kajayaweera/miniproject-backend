@@ -67,4 +67,11 @@ class AuthController extends Controller
             'message'=>'you are logged out'
         ];
     }
+
+    public function getTeachers(){
+        
+        $teachers = User::where('role' , 'teacher')->get();
+
+        return $teachers;
+    }
 }
