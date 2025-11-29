@@ -12,7 +12,7 @@ class ChildProfileController extends Controller
 {
     public function index()
     {
-        $childProfiles = ChildProfile::all();
+        $childProfiles = ChildProfile::with('user')->get();
         return response()->json($childProfiles);
     }
 
@@ -25,7 +25,8 @@ class ChildProfileController extends Controller
             'age' => 'required|integer',
             'mood' => 'nullable|string|max:255',
             'behavioural_overview' => 'nullable|string',
-            'learning_progress' => 'nullable|string'
+            'learning_progress' => 'nullable|string',
+            'attendance' => 'nullable|boolean'
         ]);
 
         if ($request->hasFile('profile_pic')) {
@@ -53,7 +54,8 @@ class ChildProfileController extends Controller
             'age' => 'sometimes|required|integer',
             'mood' => 'nullable|string|max:255',
             'behavioural_overview' => 'nullable|string',
-            'learning_progress' => 'nullable|string'
+            'learning_progress' => 'nullable|string',
+            'attendance' => 'nullable|boolean'
         ]);
 
         if ($request->hasFile('profile_pic')) {
