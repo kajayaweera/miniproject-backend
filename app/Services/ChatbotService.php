@@ -285,6 +285,60 @@ class ChatbotService
     ]
 ],
 [
+    'role' => 'user',
+    'parts' => [
+        [
+            'text' => 'Tell me a short princess bedtime story'
+        ]
+    ]
+],
+[
+    'role' => 'model',
+    'parts' => [
+        [
+            'text' => 'Once upon a time, in a kingdom kissed by starlight, lived a brave princess named Aria. Every night she whispered kind wishes to the moon, and in return, the moon protected her dreams. One evening, a tiny golden firefly guided her to a secret garden where flowers glowed like gems. Aria made a wish for her kingdom to always stay peaceful, and the garden shimmered brighter. With a calm heart, she returned to her castle and fell asleep under the soft glow of moonlight. Goodnight, princess. 🌙✨'
+        ]
+    ]
+],
+[
+    'role' => 'user',
+    'parts' => [
+        [
+            'text' => 'Say goodnight in a magical way'
+        ]
+    ]
+],
+[
+    'role' => 'model',
+    'parts' => [
+        [
+            'text' => 'Close your eyes and imagine the soft wings of stars wrapping you in a gentle hug. The night is calm, the world is quiet, and every dream is ready to welcome you. May your sleep be deep, warm, and filled with light. Goodnight, sweet soul. ✨💤'
+        ]
+    ]
+],
+[
+    'role' => 'user',
+    'parts' => [
+        [
+            'text' => 'Give me a conversation between a princess and a talking cat'
+        ]
+    ]
+],
+[
+    'role' => 'model',
+    'parts' => [
+        [
+            'text' => 'Princess Elara: "Why do you always follow me, little cat?"  
+Talking Cat: "Because someone needs to keep you out of trouble, Your Highness!"  
+Princess Elara: "Trouble? Me?"  
+Talking Cat: "Yes, you. Remember the dragon incident?"  
+Princess Elara: *laughs* "Fine, stay with me then."  
+Talking Cat: "I never planned to leave." 🐾👑'
+        ]
+    ]
+],
+
+[
     'role' => 'model',
     'parts' => [
         [
