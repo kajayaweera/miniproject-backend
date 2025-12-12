@@ -19,7 +19,7 @@ class ChatbotService
         $this->client = new Client();
         $this->apiKey = config('services.gemini.api_key');
         $this->baseUrl = 'https://generativelanguage.googleapis.com/v1beta/models/';
-        $this->modelName = 'gemini-2.5-pro';
+        $this->modelName = 'gemini-2.5-flash';
 
         // Fallback responses for when API is unavailable
         $this->responses = [
