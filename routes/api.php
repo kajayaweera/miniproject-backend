@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ChildProfileController;
+use App\Http\Controllers\MoodController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SalaryController;
 use Illuminate\Http\Request;
@@ -23,11 +25,15 @@ Route::get('/get/teachers',[AuthController::class,'getTeachers']);
 Route::apiResource('child-profiles', ChildProfileController::class);
 Route::apiResource('payments', PaymentController::class);
 Route::apiResource('salaries', SalaryController::class);
+Route::apiResource('attendances', AttendanceController::class);
+Route::apiResource('moods', MoodController::class);
 
 
 Route::get('teacher/salary/{user}',[SalaryController::class , 'getTeacherSalary'] );
 
 
 Route::get('child/profile/{user}',[ChildProfileController::class , 'getChildProfile'] );
+
+Route::get('mood/today/{userId}',[MoodController::class , 'getTodayMoodByChild'] );
 
 Route::post('/chat/send', [ChatController::class, 'sendMessage'])->name('chat.send');

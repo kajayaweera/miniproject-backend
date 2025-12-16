@@ -74,4 +74,6 @@ class AuthController extends Controller
 
         return $teachers;
     }
+
+    
 }
