@@ -133,4 +133,54 @@ class MoodController extends Controller
             ]
         ], 200);
     }
+
+    /**
+     * Get mood statistics for a specific child for bar chart.
+     */
+    public function getMoodStatistics($userId): JsonResponse
+    {
+        $childProfile = \App\Models\ChildProfile::where('user_id', $userId)->latest()->first();
+        
+        if (!$childProfile) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Child profile not found for this user'
+            ], 404);
+        }
+        
+        $moodRecords = Mood::all();
+        
+        $moodCounts = [
+            'happy' => 0,
+            'sad' => 0,
+            'angry' => 0,
+            'excited' => 0,
+            'calm' => 0,
+            'anxious' => 0,
+            'frustrated' => 0,
+            'content' => 0,
+            'tired' => 0,
+            'energetic' => 0
+        ];
+        
+        foreach ($moodRecords as $record) {
+            $childMoods = collect($record->mood)->where('child_profile_id', $childProfile->id);
+            
+            foreach ($childMoods as $moodEntry) {
+                if (isset($moodEntry['mood']) && isset($moodCounts[$moodEntry['mood']])) {
+                    $moodCounts[$moodEntry['mood']]++;
+                }
+            }
+        }
+        
+        $chartData = [
+            'labels' => array_keys($moodCounts),
+            'data' => array_values($moodCounts)
+        ];
+        
+        return response()->json([
+            'success' => true,
+            'data' => $chartData
+        ], 200);
+    }
 }

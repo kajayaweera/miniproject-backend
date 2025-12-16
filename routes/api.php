@@ -3,6 +3,7 @@
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ChildAttendanceController;
 use App\Http\Controllers\ChildProfileController;
 use App\Http\Controllers\MoodController;
 use App\Http\Controllers\PaymentController;
@@ -26,6 +27,7 @@ Route::apiResource('child-profiles', ChildProfileController::class);
 Route::apiResource('payments', PaymentController::class);
 Route::apiResource('salaries', SalaryController::class);
 Route::apiResource('attendances', AttendanceController::class);
+Route::apiResource('child-attendances', ChildAttendanceController::class);
 Route::apiResource('moods', MoodController::class);
 
 
@@ -35,5 +37,8 @@ Route::get('teacher/salary/{user}',[SalaryController::class , 'getTeacherSalary'
 Route::get('child/profile/{user}',[ChildProfileController::class , 'getChildProfile'] );
 
 Route::get('mood/today/{userId}',[MoodController::class , 'getTodayMoodByChild'] );
+Route::get('mood/statistics/{userId}',[MoodController::class , 'getMoodStatistics'] );
+
+Route::get('child-attendance/statistics/{userId}',[ChildAttendanceController::class , 'getAttendanceStatistics'] );
 
 Route::post('/chat/send', [ChatController::class, 'sendMessage'])->name('chat.send');
